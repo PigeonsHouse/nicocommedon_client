@@ -25,7 +25,7 @@ function App() {
     console.log(timeStamp)
     console.log(nowTime)
     if (timeStamp) {
-      if (nowTime - timeStamp < 5000) {
+      if (nowTime - timeStamp < 10000) {
         isSetError(true)
         return
       }
