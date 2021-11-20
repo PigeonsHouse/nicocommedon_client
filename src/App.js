@@ -11,6 +11,8 @@ function App() {
   })
 
   const [status, setStatus] = useState("");
+  const [isError, isSetError] = useState(false);
+  const [timeStamp, setTimeStamp] = useState(null);
 
   const handleStatus = (e) => {
     setStatus(e.target.value)
@@ -18,9 +20,22 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let now = new Date();
+    let nowTime = now.getTime();
+    console.log(timeStamp)
+    console.log(nowTime)
+    if (timeStamp) {
+      if (nowTime - timeStamp < 5000) {
+        isSetError(true)
+        return
+      }
+    }
+    isSetError(false)
+    setTimeStamp(nowTime)
     const res = await app.post('https://mastodon.compositecomputer.club/api/v1/statuses', {
       "status": status
     })
+    setStatus('')
     console.log(res)
   }
 
@@ -35,6 +50,12 @@ function App() {
           下のフォームに投稿するとMastodonに投稿できます！
         </p>
         <p>※最長は500文字です．</p>
+        {
+          isError &&
+          <>
+            <p className="error">投稿頻度が早すぎます．</p>
+          </>
+        }
         <form onSubmit={handleSubmit}>
           <textarea value={status} onChange={handleStatus} className="textarea"></textarea>
           <input className="submit_button" type="submit" value="トゥート！" />
