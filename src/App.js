@@ -6,7 +6,7 @@ function App() {
   const app = axios.create({
     baseURL: 'https://mastodon.compositecomputer.club/api/v1/',
     headers: {
-      'Authorization': 'Bearer hEWMfL3oK2WC87kbybWpK2CPlg_3vAQF7O8Xf8sbOkQ'
+      'Authorization': 'Bearer epm3REnBEquk-P5SCnc5UvFCnEfzK500hjgMvdfNEdA'
     }
   })
 
