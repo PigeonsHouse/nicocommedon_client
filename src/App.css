@@ -19,8 +19,11 @@
 }
 .submit_button {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .error {
   color: red;
+}
+.token_input {
+  width: 100%;
 }
